@@ -4,8 +4,8 @@
 echo "Downloading latest Nitrox release..."
 mkdir --parents /software/packages
 cd /software/packages
-curl --silent https://nitrox.rux.gg/download/start 
-    | grep --only-matching --max-count 1 "https://github.com/SubnauticaNitrox/Nitrox/releases/download/[^ ]*\.zip" 
+curl --silent https://nitrox.rux.gg/download/start \
+    | grep --only-matching --max-count 1 "https://github.com/SubnauticaNitrox/Nitrox/releases/download/[^ ]*\.zip" \
     | wget --output-document ./nitrox.zip --quiet --input-file -
 
 # Unzip the package
