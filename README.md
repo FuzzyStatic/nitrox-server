@@ -33,7 +33,7 @@ services:
 
 ```shell
 docker run -d \
-  --name=jellyfin \
+  --name=nitrox-server \
   -e PUID=1000 \
   -e PGID=1000 \
   -e TZ=Etc/UTC \
