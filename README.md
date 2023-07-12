@@ -1,6 +1,6 @@
 # [FuzzyStatic/nitrox-server](https://github.com/FuzzyStatic/nitrox-server)
 
-[Nitrox](https://github.com/SubnauticaNitrox/Nitrox) is an open-source, multiplayer modification for the game [Subnautica](https://unknownworlds.com/subnautica/). Visit the official Nitrox website [here](https://nitrox.rux.gg/download).
+[Nitrox](https://github.com/SubnauticaNitrox/Nitrox) is an open-source, multiplayer modification for the game [Subnautica](https://unknownworlds.com/subnautica/). Visit the official Nitrox website [here](https://nitrox.rux.gg/download). Currently, this container pulls the latest Nitrox Server upon deployment.
 
 ## Usage
 
