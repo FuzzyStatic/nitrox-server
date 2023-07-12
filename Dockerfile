@@ -3,8 +3,13 @@ FROM ubuntu:latest
 ENV DEBIAN_FRONTEND noninteractive
 
 # Install dependencies
-COPY ./install-dependencies.sh /software/scripts/install-dependencies.sh
-RUN /software/scripts/install-dependencies.sh
+RUN \
+	apt-get update
+	apt-get install -y --no-install-recommends \
+		curl \
+		mono-complete \
+		unzip \
+		wget
 
 # Run Nitrox
 COPY ./install-nitrox.sh /software/scripts/install-nitrox.sh
