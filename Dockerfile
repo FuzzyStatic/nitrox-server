@@ -4,7 +4,7 @@ ENV DEBIAN_FRONTEND noninteractive
 
 # Install dependencies
 RUN \
-	apt-get update
+	apt-get update && \
 	apt-get install -y --no-install-recommends \
 		curl \
 		mono-complete \
