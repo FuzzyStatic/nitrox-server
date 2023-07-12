@@ -5,6 +5,6 @@ echo "Installing dependencies..."
 apt-get -y update
 apt-get -y install \
 	curl \
-	mono-runtime \
+	mono-complete \
 	unzip \
 	wget
