@@ -11,7 +11,7 @@ groupadd --gid ${PGID} nitrox
 
 # Create the user
 echo "Creating Nitrox user account with ID ${PUID}..."
-useradd --gid ${PGID} --uid ${PUID} --home-dir /software/nitrox nitrox
+useradd --gid ${PGID} --uid ${PUID} --home-dir /config nitrox
 
 # Change the active user
 echo "Switching to Nitrox user..."
