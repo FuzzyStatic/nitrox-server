@@ -18,4 +18,4 @@ done
 # Start the server executable
 echo "Starting the Nitrox server..."
 cd /config
-mono ./NitroxServer-Subnautica.exe
+exec ./Nitrox.Server.Subnautica
