@@ -11,12 +11,12 @@ RUN \
 		wget
 
 # Run Nitrox
-COPY ./install-nitrox.sh /config/scripts/install-nitrox.sh
-COPY ./run-nitrox.sh /config/scripts/run-nitrox.sh
-COPY ./setup-timezone.sh /config/scripts/setup-timezone.sh
-COPY ./setup-user.sh /config/scripts/setup-user.sh
+COPY ./install-nitrox.sh /scripts/install-nitrox.sh
+COPY ./run-nitrox.sh /scripts/run-nitrox.sh
+COPY ./setup-timezone.sh /scripts/setup-timezone.sh
+COPY ./setup-user.sh /scripts/setup-user.sh
 CMD \
-	/config/scripts/setup-timezone.sh \
-	&& /config/scripts/setup-user.sh \
-	&& /config/scripts/install-nitrox.sh \
-	&& /config/scripts/run-nitrox.sh
+	/scripts/setup-timezone.sh \
+	&& /scripts/setup-user.sh \
+	&& /scripts/install-nitrox.sh \
+	&& /scripts/run-nitrox.sh
