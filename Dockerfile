@@ -1,4 +1,4 @@
-FROM ubuntu:latest
+FROM mcr.microsoft.com/dotnet/runtime:9.0
 
 ENV DEBIAN_FRONTEND noninteractive
 
@@ -7,7 +7,6 @@ RUN \
 	apt-get update && \
 	apt-get install -y --no-install-recommends \
 		curl \
-		mono-complete \
 		unzip \
 		wget
 
