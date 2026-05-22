@@ -18,4 +18,4 @@ done
 # Start the server executable
 echo "Starting the Nitrox server..."
 cd /config
-exec ./Nitrox.Server.Subnautica
+exec ./Nitrox.Server.Subnautica --save "${SUBNAUTICA_SAVE:-"My World"}" # Got this from Procesmon, this works
