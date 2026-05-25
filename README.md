@@ -10,11 +10,11 @@ Here are some example snippets to help you get started creating a container.
 
 To run the image using docker-compose, adjust this docker-compose file to your needs:
 
-```docker
+```yaml
 version: "1.0"
 services:
   nitrox:
-    image: docker.io/fuzzystatic/nitrox-server:latest
+    image: fuzzystatic/nitrox-server:latest
     container_name: nitrox-server
     volumes:
       - "/path/to/nitrox:/config" # Stores your server data, such as the configuration and world data
@@ -23,8 +23,8 @@ services:
       - "PUID=1000" # The ID of the group to run Nitrox as (default=1000)
       - "PGID=1000" # The ID of the user to run Nitrox as (default=1000)
       - "TZ=Etc/UTC" # The timezone to run Nitrox with (default=Etc/UTC)
-      - "SUBNAUTICA_INSTALLATION_PATH=/subnautica" # The timezone to run Nitrox with (default=/subnautica)
-      - "SUBNAUTICA_SAVE=My World" # Set this to your desired save name (default=My World) (Optional)
+      - "SUBNAUTICA_INSTALLATION_PATH=/subnautica" # The path on the container where 'Subnautica_Data' directory is (default=/subnautica)
+      - "SUBNAUTICA_SAVE=My World" # Set this to your desired save name (default=My World)
       - "CUSTOM_NITROX_REPOSITORY=SubnauticaNitrox/Nitrox" # Set this to the fork you want to use (default=SubnauticaNitrox/Nitrox)
     ports:
       - "11000:11000/udp" # Nitrox
@@ -51,15 +51,15 @@ docker run -d \
 
 Container images are configured using parameters passed at runtime (such as those above). These parameters are separated by a colon and indicate `<external>:<internal>` respectively. For example, `-p 8080:80` would expose port `80` from inside the container to be accessible from the host's IP on port `8080` outside the container.
 
-| Parameter | Function |
-| :----: | --- |
-| `-p 11000/udp` | server port - port forwarding may be required to host on the internet. |
-| `-e PUID=1000` | for UserID - see below for explanation |
-| `-e PGID=1000` | for GroupID - see below for explanation |
-| `-e TZ=Etc/UTC` | specify a timezone to use, see this [list](https://en.wikipedia.org/wiki/List_of_tz_database_time_zones#List). |
-| `-e SUBNAUTICA_INSTALLATION_PATH=/subnautica` | Subnautica game data. |
-| `-v /config` | Nitrox server data storage location. |
-| `-v /subnautica` | Subnautica game data goes here. |
+|                   Parameter                   | Function                                                                                                       |
+|:---------------------------------------------:|----------------------------------------------------------------------------------------------------------------|
+|                `-p 11000/udp`                 | server port - port forwarding may be required to host on the internet.                                         |
+|                `-e PUID=1000`                 | for UserID - see below for explanation                                                                         |
+|                `-e PGID=1000`                 | for GroupID - see below for explanation                                                                        |
+|                `-e TZ=Etc/UTC`                | specify a timezone to use, see this [list](https://en.wikipedia.org/wiki/List_of_tz_database_time_zones#List). |
+| `-e SUBNAUTICA_INSTALLATION_PATH=/subnautica` | Subnautica game data (on the container).                                                                       |
+|                 `-v /config`                  | Nitrox server data storage location.                                                                           |
+|               `-v /subnautica`                | Subnautica game data goes here.                                                                                |
 
 ## User / Group Identifiers
 
