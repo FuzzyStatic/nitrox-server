@@ -4,7 +4,7 @@
 echo "Downloading latest Nitrox release..."
 mkdir --parents /config/packages
 cd /config/packages
-curl --silent https://api.github.com/repos/SubnauticaNitrox/Nitrox/releases/latest \
+curl --silent https://api.github.com/repos/${CUSTOM_NITROX_REPOSITORY:-"SubnauticaNitrox/Nitrox"}/releases/latest \
     | grep -wo "https.*linux_x64.zip" \
     | wget --output-document ./nitrox.zip --quiet --input-file -
 

@@ -11,7 +11,8 @@ services:
       - "PGID=1000" # The ID of the user to run Nitrox as (default=1000)
       - "TZ=Etc/UTC" # The timezone to run Nitrox with (default=Etc/UTC)
       - "SUBNAUTICA_INSTALLATION_PATH=/subnautica" # The timezone to run Nitrox with (default=/subnautica)
-      - "SUBNAUTICA_SAVE=My World" # Set this to your desired save name (default=My World)
+      - "SUBNAUTICA_SAVE=My World" # Set this to your desired save name (default=My World) (Optional)
+      - "CUSTOM_NITROX_REPOSITORY=SubnauticaNitrox/Nitrox" # Set this to the fork you want to use (default=SubnauticaNitrox/Nitrox)
     ports:
       - "11000:11000/udp" # Nitrox
     restart: "unless-stopped"

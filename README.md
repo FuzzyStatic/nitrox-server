@@ -17,15 +17,17 @@ services:
     image: docker.io/fuzzystatic/nitrox-server:latest
     container_name: nitrox-server
     volumes:
-      - "/path/to/nitrox:/config"
-      - "/path/to/subnautica:/subnautica"
+      - "/path/to/nitrox:/config" # Stores your server data, such as the configuration and world data
+      - "/path/to/subnautica:/subnautica" # Stores Subnautica's game files - you will need to copy your own game directory here by moving the contents of your Subnautica installation directory to this volume
     environment:
-      - "PUID=1000"
-      - "PGID=1000"
-      - "TZ=Etc/UTC"
-      - "SUBNAUTICA_INSTALLATION_PATH=/subnautica"
+      - "PUID=1000" # The ID of the group to run Nitrox as (default=1000)
+      - "PGID=1000" # The ID of the user to run Nitrox as (default=1000)
+      - "TZ=Etc/UTC" # The timezone to run Nitrox with (default=Etc/UTC)
+      - "SUBNAUTICA_INSTALLATION_PATH=/subnautica" # The timezone to run Nitrox with (default=/subnautica)
+      - "SUBNAUTICA_SAVE=My World" # Set this to your desired save name (default=My World) (Optional)
+      - "CUSTOM_NITROX_REPOSITORY=SubnauticaNitrox/Nitrox" # Set this to the fork you want to use (default=SubnauticaNitrox/Nitrox)
     ports:
-      - "11000:11000/udp"
+      - "11000:11000/udp" # Nitrox
     restart: "unless-stopped"
 ```
 
