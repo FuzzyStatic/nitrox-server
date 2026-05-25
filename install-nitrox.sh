@@ -4,7 +4,7 @@
 echo "Downloading latest Nitrox release..."
 mkdir --parents /config/packages
 cd /config/packages
-curl --silent https://api.github.com/repos/${CUSTOM_NITROX_REPOSITORY:-"SubnauticaNitrox/Nitrox"}/releases/latest \
+curl --silent https://api.github.com/repos/"${CUSTOM_NITROX_REPOSITORY:-"SubnauticaNitrox/Nitrox"}"/releases/latest \
     | grep -wo "https.*linux_x64.zip" \
     | wget --output-document ./nitrox.zip --quiet --input-file -
 
@@ -15,11 +15,11 @@ unzip -u /config/packages/nitrox.zip -d ./
 
 # Fix the permissions
 echo "Fixing Nitrox permissions..."
-chmod +x ./*.exe
+chmod +x Nitrox.Launcher Nitrox.Server.Subnautica # *.exe did nothing because this is linux
 
 # Fix bug due to Linux file name case sensitivity
 echo "Fixing Nitrox case sensitive filenames..."
-ln --symbolic --force /subnautica/Subnautica_Data/Managed/LitJson.dll ./LitJSON.dll
+ln --symbolic --force "${SUBNAUTICA_INSTALLATION_PATH:-"/subnautica"}"/Subnautica_Data/Managed/LitJson.dll ./LitJSON.dll
 
 # Set the path to Subnautica
-echo "/subnautica" > ./path.txt
+echo "${SUBNAUTICA_INSTALLATION_PATH:-"/subnautica"}" > ./path.txt
