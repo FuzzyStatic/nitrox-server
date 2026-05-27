@@ -1,17 +1,21 @@
-name: Docker Image CI
+name: Docker Image CI - Test pull requests
 
 on:
+  workflow_dispatch:
+    inputs:
+      runner:
+        required: false
+        default: ubuntu-latest
+        description: The runner of the workflow
   pull_request:
     branches: [ "main" ]
 
 jobs:
-
   build:
-
-    runs-on: ubuntu-latest
+    runs-on: ${{ github.event_name == 'workflow_dispatch' && inputs.runner || 'ubuntu-latest' }}
 
     steps:
-    - uses: actions/checkout@v3
+      - uses: actions/checkout@v3
 
-    - name: Build the Docker image
-      run: docker build . --file Dockerfile --tag fuzzystatic/nitrox-server:latest
+      - name: Build the Docker image
+        run: docker build . --file Dockerfile --tag fuzzystatic/nitrox-server:latest
