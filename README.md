@@ -1,6 +1,6 @@
 # [FuzzyStatic/nitrox-server](https://github.com/FuzzyStatic/nitrox-server)
 
-[Nitrox](https://github.com/SubnauticaNitrox/Nitrox) is an open-source, multiplayer modification for the game [Subnautica](https://unknownworlds.com/subnautica/). Visit the official Nitrox website [here](https://nitrox.rux.gg/download). Currently, this container pulls the latest Nitrox Server upon deployment.
+[Nitrox](https://github.com/SubnauticaNitrox/Nitrox) is an open-source, multiplayer modification for the game [Subnautica](https://unknownworlds.com/subnautica/). Visit the official Nitrox website [here](https://nitrox.rux.gg/download). Currently, by default this container pulls the latest Nitrox Server upon deployment.
 
 ## Usage
 
@@ -25,6 +25,7 @@ services:
       - "TZ=Etc/UTC" # The timezone to run Nitrox with (default=Etc/UTC)
       - "SUBNAUTICA_INSTALLATION_PATH=/subnautica" # The path on the container where 'Subnautica_Data' directory is (default=/subnautica)
       - "SUBNAUTICA_SAVE=My World" # Set this to your desired save name (default=My World)
+      - "NITROX_VERSION=latest" # Set this to change the Nitrox version used, e.g. NITROX_VERSION=1.8.1.0 (default=latest)
       - "CUSTOM_NITROX_REPOSITORY=SubnauticaNitrox/Nitrox" # Set this to the fork you want to use (default=SubnauticaNitrox/Nitrox)
     ports:
       - "11000:11000/udp" # Nitrox
@@ -40,6 +41,7 @@ docker run -d \
   -e PGID=1000 \
   -e TZ=Etc/UTC \
   -e SUBNAUTICA_INSTALLATION_PATH=/subnautica \
+  -e NITROX_VERSION=latest \
   -p 11000:11000/udp \
   -v /path/to/nitrox:/config \
   -v /path/to/subnautica:/subnautica \
@@ -58,6 +60,7 @@ Container images are configured using parameters passed at runtime (such as thos
 |                `-e PGID=1000`                 | for GroupID - see below for explanation                                                                        |
 |                `-e TZ=Etc/UTC`                | specify a timezone to use, see this [list](https://en.wikipedia.org/wiki/List_of_tz_database_time_zones#List). |
 | `-e SUBNAUTICA_INSTALLATION_PATH=/subnautica` | Subnautica game data (on the container).                                                                       |
+|           `-e NITROX_VERSION=latest`          | Nitrox server version.                                                                                         |
 |                 `-v /config`                  | Nitrox server data storage location.                                                                           |
 |               `-v /subnautica`                | Subnautica game data goes here.                                                                                |
 
