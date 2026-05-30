@@ -1,10 +1,19 @@
 #!/bin/bash
 
-# Download the latest release
-echo "Downloading latest Nitrox release..."
+# Download Nitrox
+echo "Downloading Nitrox release..."
 mkdir --parents /config/packages
 cd /config/packages
-curl --silent https://api.github.com/repos/"${CUSTOM_NITROX_REPOSITORY:-"SubnauticaNitrox/Nitrox"}"/releases/latest \
+
+shopt -s nocasematch;
+if [[ "${NITROX_VERSION:-"latest"}" =~ "latest" ]]
+then
+    NITROX_URL=https://api.github.com/repos/"${CUSTOM_NITROX_REPOSITORY:-"SubnauticaNitrox/Nitrox"}"/releases/latest
+else
+    NITROX_URL=https://api.github.com/repos/"${CUSTOM_NITROX_REPOSITORY:-"SubnauticaNitrox/Nitrox"}"/releases/tags/"${NITROX_VERSION:-"latest"}"
+fi
+
+curl --silent "$NITROX_URL" \
     | grep -wo "https.*linux_x64.zip" \
     | wget --output-document ./nitrox.zip --quiet --input-file -
 

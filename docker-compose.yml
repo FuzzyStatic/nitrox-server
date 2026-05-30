@@ -12,6 +12,7 @@ services:
       - "TZ=Etc/UTC" # The timezone to run Nitrox with (default=Etc/UTC)
       - "SUBNAUTICA_INSTALLATION_PATH=/subnautica" # The timezone to run Nitrox with (default=/subnautica)
       - "SUBNAUTICA_SAVE=My World" # Set this to your desired save name (default=My World) (Optional)
+      - "NITROX_VERSION=latest" # Set this to change the Nitrox version used, e.g. NITROX_VERSION=1.8.1.0 (default=latest)
       - "CUSTOM_NITROX_REPOSITORY=SubnauticaNitrox/Nitrox" # Set this to the fork you want to use (default=SubnauticaNitrox/Nitrox)
     ports:
       - "11000:11000/udp" # Nitrox
